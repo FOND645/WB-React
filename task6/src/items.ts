@@ -14,6 +14,14 @@ export type Item = {
     icon: string,
 }
 
+export enum ItemRate {
+    COMMON,
+    RARE,
+    EPIC,
+    LEGENDARY,
+    COLLECTION
+}
+
 export const Items: Item[] = [
     {
         id: 1,
@@ -32,8 +40,8 @@ export const Items: Item[] = [
     {
         id: 3,
         name: 'Катана',
-        width: 1,
-        height: 8,
+        width: 8,
+        height: 1,
         icon: kathanaImg,
     },
     {
