@@ -58,16 +58,16 @@ class Inventory {
             }
         });
 
-        console.log(this.itemsField);
-        console.log(this.items)
-
         this.items.forEach(Item => {
             const { X, Y, item } = Item;
             for (let IX = X; IX < X + item.width; IX++) {
                 for (let IY = Y; IY < Y + item.height; IY++) {
-                    console.log(IX, X + item.width);
-                    console.log(IY, Y + item.height);
-                    console.log(Item);
+                    if (IX >= this.width || IY >= this.height) throw new Error(`Item is out of inv
+                        ${JSON.stringify({
+                            X,
+                            Y,
+                            item,
+                        }, null, 2)}`)
                     if (this.itemsField[IX][IY]) throw new Error(`Items collision in backup!
                         ItemA: ${JSON.stringify({
                             X,
@@ -79,7 +79,6 @@ class Inventory {
                     this.itemsField[IX][IY] = Item;
                 }
             }
-            console.log("-----------------");
         })
     }
 }
