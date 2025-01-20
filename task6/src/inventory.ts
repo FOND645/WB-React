@@ -18,8 +18,8 @@ type InventoryBackUp = {
 }
 
 const invBU = {
-    width: 12,
-    height: 12,
+    width: 15,
+    height: 15,
     items: [
       { X: 0, Y: 0, rate: 0, itemId: 1 },
       { X: 4, Y: 0, rate: 2, itemId: 6 },
@@ -46,6 +46,8 @@ class Inventory {
     parseJSONinv(jsonInv: string): void {
         const invData = JSON.parse(jsonInv) as InventoryBackUp;
         this.itemsField = Array(invData.width).fill(undefined).map(() => new Array(invData.height).fill(undefined));
+        this.height = invData.height;
+        this.width = invData.width;
         this.items = invData.items.map(Item => {
             const { X, Y, rate, itemId } = Item;
             const item = Items.find(I => I.id === itemId);
